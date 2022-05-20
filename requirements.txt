@@ -4,3 +4,4 @@ pytest-ordering
 pytest-rerunfailures
 pytest-html
 allure-pytest
+requests
