@@ -1,15 +1,12 @@
 import json
+import os
+
 import requests
 
 from common.yaml_util import write_yaml, read_yaml
 
 
 class TestRequest:
-    # 全局变量,类变量
-    # access_token = ""
-    # csrf_token = ""
-    php_cookie = ""
-    sess = requests.session()
 
     # get请求：获取统一鉴权码token接口
     def test_get_token(self):
@@ -37,7 +34,7 @@ class TestRequest:
     def test_file_upload(self):
         url = "https://api.weixin.qq.com/cgi-bin/media/uploadimg?access_token=" + read_yaml("access_token")
         data = {
-            "media": open(r"E:\developer\idea\workspace\autotest_pytest\image.png", "rb")
+            "media": open(os.getcwd()+"/image.png", "rb")
         }
         res = requests.request(method="post", url=url, files=data)
         print(res.json())
