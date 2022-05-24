@@ -1,4 +1,4 @@
-# 对yaml操作的工具
+# 操作yaml的工具包
 
 # 读取
 import os
