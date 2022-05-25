@@ -1,0 +1,30 @@
+-
+  name: 获取接口统一鉴权码
+  request:
+    method: get
+    url: https://api.weixin.qq.com/cgi-bin/token
+    data:
+      grant_type: client_credential
+      appid: wx7ff6c1d5ba45d17e
+      secret: 4b5fe134130b7c292d6a6c22f38b56d0
+  validate: None
+-
+  name: 获取接口统一鉴权码
+  request:
+    method: get
+    url: https://api.weixin.qq.com/cgi-bin/token
+    data:
+      grant_type: ""
+      appid: wx7ff6c1d5ba45d17e
+      secret: 4b5fe134130b7c292d6a6c22f38b56d0
+  validate: None
+-
+  name: 获取接口统一鉴权码
+  request:
+    method: get
+    url: https://api.weixin.qq.com/cgi-bin/token
+    data:
+      grant_type: client_credential
+      appid: ""
+      secret: 4b5fe134130b7c292d6a6c22f38b56d0
+  validate: None
