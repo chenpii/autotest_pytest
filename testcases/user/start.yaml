@@ -1,0 +1,6 @@
+-
+  name: 访问首页接口
+  request:
+    method: get
+    url: http://47.107.116.139/phpwind/
+  validate: None

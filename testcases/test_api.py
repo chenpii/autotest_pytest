@@ -21,21 +21,26 @@ class TestRequest:
         if "access_token" in res.text:
             write_yaml({"access_token": res.json()['access_token']})
 
-    # # post请求:编辑标签接口
-    # def test_edit_flag(self):
-    #     url = "https://api.weixin.qq.com/cgi-bin/tags/update?access_token=" + read_yaml("access_token")
-    #     data = {"tag": {"id": 134, "name": "广东人"}}
-    #     res = RequestUtil.send_request(method="post", url=url, datas=data)
-    #     print(res.json())
-    #
-    # # 文件上传
-    # def test_file_upload(self):
-    #     url = "https://api.weixin.qq.com/cgi-bin/media/uploadimg?access_token=" + read_yaml("access_token")
-    #     data = {
-    #         "media": open(os.getcwd()+"/image.png", "rb")
-    #     }
-    #     res = RequestUtil.send_request(method="post", url=url, files=data)
-    #     print(res.json())
+    # post请求:编辑标签接口
+    @pytest.mark.parametrize("args_name", read_testcase("edit_flag.yaml"))
+    def test_edit_flag(self, args_name):
+        url = args_name["request"]["url"] + read_yaml("access_token")
+        # data = {"tag": {"id": 134, "name": "广东人"}}
+        data = args_name["request"]["data"]
+        method = args_name["request"]["method"]
+        res = RequestUtil.send_request(method=method, url=url, datas=data)
+        print(res.json())
+
+    # 文件上传接口
+    @pytest.mark.parametrize("args_name", read_testcase("file_upload.yaml"))
+    def test_file_upload(self, args_name):
+        url = args_name["request"]["url"] + read_yaml("access_token")
+        data = {
+            "media": open(os.getcwd() + args_name["request"]["data"]["media"], "rb")
+        }
+        method = args_name["request"]["method"]
+        res = RequestUtil.send_request(method=method, url=url, files=data)
+        print(res.json())
 
 
 if __name__ == '__main__':
