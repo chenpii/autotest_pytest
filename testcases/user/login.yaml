@@ -1,0 +1,14 @@
+-
+  name: 登录接口
+  request:
+    method: post
+    url: http://47.107.116.139/phpwind/index.php?m=u&c=login&a=dorun
+    data:
+      username: chenh
+      password: chen0816php
+      backurl: http://47.107.116.139/phpwind/
+      invite: ""
+    headers:
+      Accept: application/json,text/javascript,/; q=0.01
+      X-Requested-With: XMLHttpRequest
+  validate: None

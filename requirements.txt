@@ -3,6 +3,7 @@ pytest-xdist
 pytest-ordering
 pytest-rerunfailures
 pytest-html
+pytest-dependency
 allure-pytest
 requests
 pyyaml

@@ -1,27 +1,18 @@
-import re
+import pytest
 
 from common.request_util import RequestUtil
-from common.yaml_util import write_yaml, read_yaml
+from common.yaml_util import read_yaml, read_testcase
 
 
 class TestLogin:
 
-
-
-
     # 登录接口
-    def test_login(self):
-        url = "http://47.107.116.139/phpwind/index.php?m=u&c=login&a=dorun"
-        data = {
-            "username": "chenh",
-            "password": "chen0816php",
-            "csrf_token": read_yaml("csrf_token"),  # 鉴权码，从首页获取
-            "backurl": "http://47.107.116.139/phpwind/",
-            "invite": ""
-        }
-        headers = {
-            "Accept": "application/json,text/javascript,/; q=0.01",
-            "X-Requested-With": "XMLHttpRequest"
-        }
-        res = RequestUtil.send_request(method="post", url=url, datas=data, headers=headers)
+    @pytest.mark.parametrize("args_name", read_testcase("/user/login.yaml"))
+    def test_login(self, args_name):
+        url = args_name["request"]["url"]
+        method = args_name["request"]["method"]
+        data = args_name["request"]["data"]
+        data.update({"csrf_token": read_yaml("csrf_token")})
+        headers = args_name["request"]["headers"]
+        res = RequestUtil.send_request(method=method, url=url, datas=data, headers=headers)
         print(res.json())

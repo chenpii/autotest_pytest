@@ -5,7 +5,7 @@
 #     assert 1 == 2
 #
 #
-# class TestLogin:
+# class TestDemo:
 #     age = 18
 #
 #     def setup_class(self):

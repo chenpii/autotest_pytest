@@ -8,6 +8,7 @@ from common.yaml_util import write_yaml, read_testcase
 
 class TestStart:
     # 访问首页接口
+    @pytest.mark.run(order=1)
     @pytest.mark.parametrize("args_name", read_testcase("/user/start.yaml"))
     def test_start(self, args_name):
         url = args_name["request"]["url"]
